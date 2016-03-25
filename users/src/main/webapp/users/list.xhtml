@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h2>User List</h2>
+	
+	<f:view>
+        <h:messages/>
+        <!--  Show the current gadget catalog -->
+        <h:dataTable value="#{userService.allUsers}" var="u">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="User Name" />
+                </f:facet>
+                <h:outputText value="#{u.username}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="First Name" />
+                </f:facet>
+                <h:outputText value="#{u.firstName}" />
+            </h:column>
+        </h:dataTable>
+        <h:form>
+            <!-- Link to add a new gadget -->
+            <h:link outcome="/users/add">
+            	<h:outputText value="[Add User]"/>
+           	</h:link>
+        </h:form>
+    </f:view>
+	</ui:define>
+</ui:composition>
